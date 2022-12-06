@@ -20,10 +20,22 @@ function crateMover9000 (quantity, start, end) {
   for (let i = 0; i < quantity; i++) {
     const crate = cratePile[start].shift()
     cratePile[end].unshift(crate)
-    // cratePile[end].shift(cratePile[start].unshift());
   }
 }
 
+instructions.forEach(instruction => {
+  const split = instruction.split(' ');
+
+  crateMover9000(split[1], split[3], split[5])
+});
+
+let output = '';
+
+Object.values(cratePile).forEach(e => {
+  output += e[0]
+})
+
+console.log(output)
 // testInstructions.forEach(instruction => {
 //   const split = instruction.split(' ');
 //   console.log(instruction)
@@ -33,20 +45,7 @@ function crateMover9000 (quantity, start, end) {
 // });
 
 // console.log(cratePile)
-instructions.forEach(instruction => {
-  const split = instruction.split(' ');
-
-  crateMover9000(split[1], split[3], split[5])
-});
 
 // crateMover9000(2, 1, 2)
 
 // console.log(cratePile)
-
-let output = '';
-
-Object.values(cratePile).forEach(e => {
-  output += e[0]
-})
-
-console.log(output)
