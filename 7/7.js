@@ -1,9 +1,6 @@
 const inputs = require('./input')
 const testOutput = 95437;
 
-// create an object, where keys are dir name
-// each dir can have other dirs or a files arr file sizes
-
 class Directory {
   constructor(parent, name) {
     this._files = [];
@@ -50,6 +47,7 @@ let root = new Directory(null, 'root');
 
 const inputSplit = inputs.real.split(/\n/);
 let cwd = root;
+
 inputSplit.forEach((input, index) => {
   if(index === 0) {
     return
@@ -82,22 +80,10 @@ inputSplit.forEach((input, index) => {
 
 })
 
-console.log(root)
-console.log(root.size)
-
-const finalSum = root
+const partOneSum = root
   .getAllDirectories()
   .map(i => i.size)
   .filter(i => i<=100000)
   .reduce((acc, curr) => { return acc + curr}, 0)
 
-console.log(`Final sum is ${finalSum}`)
-// console.log(root.getAllDirectories())
-
-// start at root
-// looop through _subdirs
-
-
-
-
-
+console.log(`Part One sum ${partOneSum}`)
