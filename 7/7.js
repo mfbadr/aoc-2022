@@ -80,10 +80,27 @@ inputSplit.forEach((input, index) => {
 
 })
 
-const partOneSum = root
+
+
+const allDirSizes = root
   .getAllDirectories()
   .map(i => i.size)
+const partOneSum = allDirSizes
   .filter(i => i<=100000)
   .reduce((acc, curr) => { return acc + curr}, 0)
 
 console.log(`Part One sum ${partOneSum}`)
+
+// part 2: Find smallest directory that, when deleted would free up 30000000
+
+const freeSpace = 70000000 - root.size;
+
+const spaceNeeded = 30000000 - freeSpace
+
+const partTwo = allDirSizes
+  .filter(i => i>spaceNeeded)
+  .sort((a, b) => a - b)
+
+  console.log(partTwo)
+
+console.log(`Part Two answer is ${partTwo[0]}`)
