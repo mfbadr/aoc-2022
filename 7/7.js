@@ -101,6 +101,5 @@ const partTwo = allDirSizes
   .filter(i => i>spaceNeeded)
   .sort((a, b) => a - b)
 
-  console.log(partTwo)
 
 console.log(`Part Two answer is ${partTwo[0]}`)
